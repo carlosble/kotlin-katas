@@ -6,7 +6,8 @@ import org.mockito.kotlin.doThrow
 import org.mockito.kotlin.mock
 
 internal class StringCalculatorShould {
-    @Test
+
+    /*@Test
     fun `throw not implemented`() {
 
         val dependencyMock = mock<StringCalculatorDependency> {
@@ -18,5 +19,5 @@ internal class StringCalculatorShould {
             .isThrownBy {
                 StringCalculator(dependencyMock).execute()
             }.withMessage("Time to do some TDD...")
-    }
+    }*/
 }
