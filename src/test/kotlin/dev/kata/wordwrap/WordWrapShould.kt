@@ -1,6 +1,8 @@
 package dev.kata.wordwrap
 
 import arrow.core.getOrElse
+import dev.kata.wordWrap.ColumnWidth
+import dev.kata.wordWrap.Text
 import dev.kata.wordWrap.Wrapper
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -21,8 +23,9 @@ class WordWrapShould {
     }
 
     private fun wrap(text: String, columnWidth: Int): String {
-        return Wrapper
-            .wrap(text, columnWidth).map { t -> t.toString() }
+        return ColumnWidth
+            .create(columnWidth)
+            .map { width -> Wrapper.wrap(Text(text), width).toString() }
             .getOrElse { e -> e.message ?: "Error message is null!" }
     }
 }

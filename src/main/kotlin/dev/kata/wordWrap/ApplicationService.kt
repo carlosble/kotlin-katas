@@ -15,8 +15,12 @@ class ApplicationService(private val outputPrinter: PrintStream, private val err
         }
         val text = args[0]
 
-        Wrapper.wrap(text, columnWidth)
-            .map { w -> outputPrinter.println(w.toString()) }
+        ColumnWidth
+            .create(columnWidth)
+            .map { width ->
+                val wrapped = Wrapper.wrap(Text(text), width)
+                outputPrinter.println(wrapped.toString())
+            }
             .mapLeft { e -> errorPrinter.println(e.message) }
     }
 }
